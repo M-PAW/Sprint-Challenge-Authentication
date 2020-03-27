@@ -22,14 +22,14 @@ describe('server.js', function() {
 
     describe('GET /', function() {
         it('Should return a status 200', async function() {
-            request(jokesRouter).get('/').then( res => {
+            request(server).get('/api/jokes').then( res => {
                 expect(res.status).toBe(200);
             })               
         })
 
         it('Should return a status 200', async function() {
-            request(jokesRouter).get('/').then( res => {
-                expect(res.type).toMatch(/json/i);
+            request(server).get('/api/jokes').then( res => {
+                expect(res.type).toBe(/json/i);
             })          
         })
 
@@ -38,17 +38,17 @@ describe('server.js', function() {
 
 })
 
-describe('server', function(){
+describe('POST /', function(){
 
     describe('POST /register', function(){
         it('Should return status 201', async function(){
-            request(authRouter).get('/register').then(res => {
+            request(server).post('/register').then(res => {
                 expect(res.status).toBe(201)
             })
         })
 
         it('Should return status 201', async function(){
-            request(authRouter).get('/register').then(res => {
+            request(server).post('/register').then(res => {
                 expect(res.type).toMatch(/json/i);
             })
         })
@@ -61,13 +61,13 @@ describe('server', function(){
 
     describe('POST /login', function(){
         it('Should return status 201', async function(){
-            request(authRouter).get('/login').then(res => {
+            request(authRouter).post('/login').then(res => {
                 expect(res.status.toBe(201))
             })
         })
 
         it('Should return status 201', async function(){
-            request(authRouter).get('/login').then(res => {
+            request(authRouter).post('/login').then(res => {
                 expect(res.type).toMatch(/json/i);
             })
         })
